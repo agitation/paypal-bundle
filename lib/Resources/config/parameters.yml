@@ -1,0 +1,11 @@
+parameters:
+    agit_payment_paypal:
+        environment:
+            test:
+                appId: APP-80W284485P519543T
+                nvpApiUrl: https://api-3t.sandbox.paypal.com/nvp
+                paymentPageUrl: https://www.sandbox.paypal.com/cgi-bin/webscr
+            live:
+                appId: APP-0S279355GY228961A
+                nvpApiUrl: https://api-3t.paypal.com/nvp
+                paymentPageUrl: https://www.paypal.com/cgi-bin/webscr

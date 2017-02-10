@@ -1,0 +1,15 @@
+{% extends [ "::page.admin.html.twig", "AppBundle:Include:page.admin.html.twig", "AgitAdminBundle:Include:page.admin.html.twig" ] %}
+
+{% agit.capability "agit.settings.read" %}
+
+{% agit.name t("PayPal") %}
+
+{% block js %}
+    {% javascripts
+        "@AgitPaypalBundle/Resources/public/js/ctl/admin.settings.paypal.js"
+
+        filter="?uglifyjs2"
+    %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}
