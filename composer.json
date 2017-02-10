@@ -1,0 +1,26 @@
+{
+    "name": "agitation/paypal-bundle",
+    "type": "symfony-bundle",
+    "require": {
+        "php": ">=5.6",
+        "symfony/symfony": "2.8.*",
+        "agitation/base-bundle": "~1.0",
+        "agitation/ui-bundle": "~1.0",
+        "agitation/intl-bundle": "~1.0",
+        "agitation/order-bundle": "~1.0",
+        "agitation/validation-bundle": "~1.0",
+        "agitation/setting-bundle": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Agit\\PaypalBundle\\": "lib/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "AGITsol GmbH",
+            "homepage": "http://www.agitsol.com/"
+        }
+    ]
+}
