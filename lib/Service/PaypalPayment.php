@@ -34,7 +34,7 @@ class PaypalPayment implements PaymentModuleInterface
 
     public function getId()
     {
-        return "paypal";
+        return "PP";
     }
 
     public function getName()
@@ -49,7 +49,7 @@ class PaypalPayment implements PaymentModuleInterface
 
     public function getMethods()
     {
-        return ["paypal" => "PayPal"];
+        return ["PP" => "PayPal"];
     }
 
     public function getActiveMethods()
