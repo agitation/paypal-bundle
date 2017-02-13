@@ -14,19 +14,19 @@ use Agit\OrderBundle\Entity\Payment;
 use Agit\OrderBundle\Exception\PaymentProviderCallException;
 use Agit\OrderBundle\Service\OrderUrlService;
 
-class PaypalApi
+class Api
 {
     private $orderUrlService;
 
-    private $config;
+    private $parameters;
 
     private $settings;
 
-    public function __construct(OrderUrlService $orderUrlService, PaypalConfig $paypalConfig)
+    public function __construct(OrderUrlService $orderUrlService, Config $config)
     {
         $this->orderUrlService = $orderUrlService;
-        $this->config = $paypalConfig->getConfig();
-        $this->settings = $paypalConfig->getSettings();
+        $this->parameters = $config->getParameters();
+        $this->settings = $config->getSettings();
     }
 
     public function callSetExpressCheckout(Payment $payment)
@@ -79,7 +79,7 @@ class PaypalApi
 
     private function doCall(array $postFields, array $expectedResultFields = [])
     {
-        $headers = ["X-PAYPAL-APPLICATION-ID" => $this->config["appId"]];
+        $headers = ["X-PAYPAL-APPLICATION-ID" => $this->parameters["appId"]];
 
         $request = [];
 
@@ -90,7 +90,7 @@ class PaypalApi
         $request = implode("&", $request);
 
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $this->config["nvpApiUrl"]);
+        curl_setopt($curl, CURLOPT_URL, $this->parameters["nvpApiUrl"]);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curl, CURLOPT_VERBOSE, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);

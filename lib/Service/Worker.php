@@ -19,30 +19,31 @@ use Agit\OrderBundle\Service\PaymentWorker;
 use Agit\ValidationBundle\ValidationService;
 use Symfony\Component\HttpFoundation\Request;
 
-class PaypalWorker
+class Worker
 {
     private $validator;
 
     private $paymentWorker;
 
-    private $paypalApi;
+    private $api;
 
-    private $paypalConfig;
+    private $config;
 
-    public function __construct(ValidationService $validator, PaymentWorker $paymentWorker, PaypalApi $paypalApi, PaypalConfig $paypalConfig)
+    public function __construct(ValidationService $validator, PaymentWorker $paymentWorker, Api $api, Config $config)
     {
         $this->paymentWorker = $paymentWorker;
-        $this->paypalApi = $paypalApi;
-        $this->paypalConfig = $paypalConfig;
+        $this->api = $api;
+        $this->config = $config;
         $this->validator = $validator;
     }
 
     public function initPayment(OrderInterface $order, $method, array $details)
     {
+        // we expect an empty array
         $this->validator->validate("array", $details, 0, 0);
 
-        $payment = $this->paymentWorker->createPayment($order, "paypal", "paypal", $details);
-        $ecResult = $this->paypalApi->callSetExpressCheckout($payment);
+        $payment = $this->paymentWorker->createPayment($order, "PP", "PP", $details);
+        $ecResult = $this->api->callSetExpressCheckout($payment);
 
         // update payment details with received token
         $details = $payment->getDetails();
@@ -55,7 +56,7 @@ class PaypalWorker
 
     public function getForwardPage(Payment $payment)
     {
-        $config = $this->paypalConfig->getConfig();
+        $config = $this->config->getParameters();
         $details = $payment->getDetails();
         $fields = ["cmd" => "_express-checkout", "token" => $details["token"]];
 
@@ -81,7 +82,7 @@ class PaypalWorker
         try {
             // first get details (especially PayerID), then execute payment
             foreach (["get" => "callGetExpressCheckoutDetails", "do" => "callDoExpressCheckoutPayment"] as $type => $method) {
-                $txnDetails = $this->paypalApi->$method($payment);
+                $txnDetails = $this->api->$method($payment);
                 $details = $payment->getDetails() + $txnDetails;
                 $payment->setDetails($details);
             }

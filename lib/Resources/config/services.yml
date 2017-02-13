@@ -1,49 +1,57 @@
 services:
-    agit.payment.paypal:
-        class: Agit\PaypalBundle\Service\PaypalPayment
-        arguments: [ "@agit.validation", "@agit.payment.paypal.worker", "@agit.payment.paypal.config" ]
+    agit.paypal:
+        class: Agit\PaypalBundle\Service\PaymentModule
+        arguments: [ "@agit.paypal.worker", "@agit.paypal.config" ]
         tags: [{ name: agit.payment.module }]
 
-    agit.payment.paypal.config:
-        class: Agit\PaypalBundle\Service\PaypalConfig
+    agit.paypal.config:
+        private : true
+        class: Agit\PaypalBundle\Service\Config
         arguments: [ "%agit_payment_paypal%", "@agit.setting" ]
 
-    agit.payment.paypal.api:
-        class: Agit\PaypalBundle\Service\PaypalApi
-        arguments: [ "@agit.order.url", "@agit.payment.paypal.config" ]
+    agit.paypal.api:
+        private : true
+        class: Agit\PaypalBundle\Service\Api
+        arguments: [ "@agit.order.url", "@agit.paypal.config" ]
 
-    agit.payment.paypal.worker:
-        class: Agit\PaypalBundle\Service\PaypalWorker
-        arguments: [ "@agit.validation", "@agit.payment.worker", "@agit.payment.paypal.api", "@agit.payment.paypal.config" ]
+    agit.paypal.worker:
+        private : true
+        class: Agit\PaypalBundle\Service\Worker
+        arguments: [ "@agit.validation", "@agit.payment.worker", "@agit.paypal.api", "@agit.paypal.config" ]
 
 
     # settings
 
-    agit.payment.paypal.setting:
+    agit.paypal.setting:
         abstract: true
         arguments: [ "@agit.validation" ]
 
-    agit.payment.paypal.setting.active:
-        parent: agit.payment.paypal.setting
-        class: Agit\PaypalBundle\Setting\PaypalIsActiveSetting
+    agit.paypal.setting.active:
+        private : true
+        parent: agit.paypal.setting
+        class: Agit\PaypalBundle\Setting\IsActiveSetting
         tags: [{ name: agit.setting }]
 
-    agit.payment.paypal.setting.environment:
-        parent: agit.payment.paypal.setting
-        class: Agit\PaypalBundle\Setting\PaypalEnvironmentSetting
+    agit.paypal.setting.environment:
+        private : true
+        parent: agit.paypal.setting
+        class: Agit\PaypalBundle\Setting\EnvironmentSetting
         tags: [{ name: agit.setting }]
 
-    agit.payment.paypal.setting.api_username:
-        parent: agit.payment.paypal.setting
-        class: Agit\PaypalBundle\Setting\PaypalApiUsernameSetting
+    agit.paypal.setting.api_username:
+        private : true
+        parent: agit.paypal.setting
+        class: Agit\PaypalBundle\Setting\ApiUsernameSetting
         tags: [{ name: agit.setting }]
 
-    agit.payment.paypal.setting.api_password:
-        parent: agit.payment.paypal.setting
-        class: Agit\PaypalBundle\Setting\PaypalApiPasswordSetting
+    agit.paypal.setting.api_password:
+        private : true
+        parent: agit.paypal.setting
+        class: Agit\PaypalBundle\Setting\ApiPasswordSetting
         tags: [{ name: agit.setting }]
 
-    agit.payment.paypal.setting.api_signature:
-        parent: agit.payment.paypal.setting
-        class: Agit\PaypalBundle\Setting\PaypalApiSignatureSetting
+    agit.paypal.setting.api_signature:
+        private : true
+        parent: agit.paypal.setting
+        class: Agit\PaypalBundle\Setting\ApiSignatureSetting
         tags: [{ name: agit.setting }]

@@ -11,25 +11,25 @@ namespace Agit\PaypalBundle\Setting;
 
 use Agit\IntlBundle\Tool\Translate;
 
-class PaypalEnvironmentSetting extends AbstractPaypalSetting
+class ApiSignatureSetting extends AbstractPaypalSetting
 {
     public function getId()
     {
-        return "agit.payment.paypal.environment";
+        return "agit.payment.paypal.api_signature";
     }
 
     public function getName()
     {
-        return Translate::t("Environment");
+        return Translate::t("API signature");
     }
 
     public function getDefaultValue()
     {
-        return "test";
+        return null;
     }
 
     public function validate($value)
     {
-        $this->validationService->validate("selection", $value, ["test", "live"]);
+        $this->validationService->validate("string", $value, 30, 100);
     }
 }

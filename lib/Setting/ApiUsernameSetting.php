@@ -11,7 +11,7 @@ namespace Agit\PaypalBundle\Setting;
 
 use Agit\IntlBundle\Tool\Translate;
 
-class PaypalApiUsernameSetting extends AbstractPaypalSetting
+class ApiUsernameSetting extends AbstractPaypalSetting
 {
     public function getId()
     {

@@ -12,24 +12,18 @@ namespace Agit\PaypalBundle\Service;
 use Agit\OrderBundle\Entity\OrderInterface;
 use Agit\OrderBundle\Entity\Payment;
 use Agit\OrderBundle\Service\PaymentModuleInterface;
-use Agit\ValidationBundle\ValidationService;
 use Symfony\Component\HttpFoundation\Request;
 
-class PaypalPayment implements PaymentModuleInterface
+class PaymentModule implements PaymentModuleInterface
 {
-    private $validationService;
+    private $worker;
 
-    private $paypalWorker;
+    private $config;
 
-    private $paypalApi;
-
-    private $paypalConfig;
-
-    public function __construct(ValidationService $validationService, PaypalWorker $paypalWorker, PaypalConfig $paypalConfig)
+    public function __construct(Worker $worker, Config $config)
     {
-        $this->validationService = $validationService;
-        $this->paypalWorker = $paypalWorker;
-        $this->paypalConfig = $paypalConfig;
+        $this->worker = $worker;
+        $this->config = $config;
     }
 
     public function getId()
@@ -44,7 +38,7 @@ class PaypalPayment implements PaymentModuleInterface
 
     public function isActive()
     {
-        return $this->paypalConfig->isActive();
+        return $this->config->isActive();
     }
 
     public function getMethods()
@@ -64,16 +58,16 @@ class PaypalPayment implements PaymentModuleInterface
 
     public function initPayment(OrderInterface $order, $method, array $parameters)
     {
-        return $this->paypalWorker->initPayment($order, $method, $parameters);
+        return $this->worker->initPayment($order, $method, $parameters);
     }
 
     public function getForwardPage(Payment $payment)
     {
-        return $this->paypalWorker->getForwardPage($payment);
+        return $this->worker->getForwardPage($payment);
     }
 
     public function processPayment(Payment $payment, $action, Request $request)
     {
-        return $this->paypalWorker->processPayment($payment, $action, $request);
+        return $this->worker->processPayment($payment, $action, $request);
     }
 }

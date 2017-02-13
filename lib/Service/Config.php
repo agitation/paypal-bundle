@@ -11,11 +11,11 @@ namespace Agit\PaypalBundle\Service;
 
 use Agit\SettingBundle\Service\SettingService;
 
-class PaypalConfig
+class Config
 {
     private $active;
 
-    private $config;
+    private $parameters;
 
     private $settingNames = [
         "agit.payment.paypal.active",
@@ -27,12 +27,12 @@ class PaypalConfig
 
     private $settings;
 
-    public function __construct($config, SettingService $settingService)
+    public function __construct($parameters, SettingService $settingService)
     {
         $this->settings = $settingService->getValuesOf($this->settingNames);
         $environment = $this->settings["agit.payment.paypal.environment"];
         $this->active = $this->settings["agit.payment.paypal.active"];
-        $this->config = $config["environment"][$environment];
+        $this->parameters = $parameters["environment"][$environment];
     }
 
     public function isActive()
@@ -40,9 +40,9 @@ class PaypalConfig
         return $this->active;
     }
 
-    public function getConfig()
+    public function getParameters()
     {
-        return $this->config;
+        return $this->parameters;
     }
 
     public function getSettings()
