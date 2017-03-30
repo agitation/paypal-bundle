@@ -1,2 +1,4 @@
-.module-paypal.method-paypal tr > *                                     { font-weight: normal; vertical-align: middle; }
-.module-paypal.method-paypal .paypal-logo svg                           { height: 30px; }
+.module-paypal.method-paypal td                                         { padding: 15px; vertical-align: middle; }
+.module-paypal.method-paypal span                                       { display: inline-block; height: 30px; line-height: 30px }
+.module-paypal.method-paypal .paypal-logo                               { float: right; }
+.module-paypal.method-paypal .paypal-logo svg                           { height: 100%; }

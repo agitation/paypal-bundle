@@ -1,14 +1,10 @@
-<template id="agit-payment-paypal-checkout">
-<table>{# dummy #}
+<template id="agit-paypal">
+<table>
     <tbody class="module-paypal method-paypal">
         <tr>
-            <th>
-                {{ t("In the next step, you will be forwarded to the PayPal website to finish the payment.") }}
-            </th>
-            <td>
-                <div class="paypal-logo">
-                    {% include "AgitPaypalBundle:Include:paypal.svg.twig" %}
-                </div>
+            <td colspan="2">
+                <span>{{ t("In the next step, you will be forwarded to the PayPal website to finish the payment.") }}</span>
+                <span class="paypal-logo">{% include "AgitPaypalBundle:Include:paypal.svg.twig" %}</span>
             </td>
             <td></td>
         </tr>
