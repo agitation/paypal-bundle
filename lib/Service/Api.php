@@ -53,7 +53,7 @@ class Api
         if ($txnDetails["checkoutstatus"] !== "PaymentActionNotInitiated") {
             throw new PaymentProviderCallException(sprintf(
                 "Payment %s has already been processed: %s",
-                $payment->getFullCode(),
+                $payment->getId(),
                 $txnDetails["checkoutstatus"]
             ));
         }
@@ -150,7 +150,7 @@ class Api
 
     private function getCommonPostFields($payment)
     {
-        $txnId = $payment->getFullCode();
+        $txnId = $payment->getId();
 
         $fields =
         [

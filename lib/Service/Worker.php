@@ -70,13 +70,13 @@ class Worker
         }
 
         if ($payment->getStatus() !== $payment::STATUS_OPEN) {
-            throw new PaymentRequestException(sprintf("Payment %s has already been processed.", $payment->getFullCode()));
+            throw new PaymentRequestException(sprintf("Payment %s has already been processed.", $payment->getId()));
         }
 
         $details = $payment->getDetails();
 
         if (! isset($details["token"])) { // somehow a payment was submitted which wasn't initialized yet.
-            throw new PaymentRequestException(sprintf("Payment %s has not been initialized yet.", $payment->getFullCode()));
+            throw new PaymentRequestException(sprintf("Payment %s has not been initialized yet.", $payment->getId()));
         }
 
         try {
@@ -90,7 +90,7 @@ class Worker
             $this->paymentWorker->paymentFailed(
                 $payment,
                 Translate::noop("The PayPal request for payment %s has failed, most likely because the transaction has already been processed."),
-                [$payment->getFullCode()],
+                [$payment->getId()],
                 $e->getMessage()
             );
         }
@@ -99,7 +99,7 @@ class Worker
             $this->paymentWorker->paymentFailed(
                 $payment,
                 Translate::noop("The transaction status for payment %s indicates a failed payment."),
-                [$payment->getFullCode()],
+                [$payment->getId()],
                 $details["paymentinfo_0_paymentstatus"]
             );
         }
