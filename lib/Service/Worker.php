@@ -42,7 +42,7 @@ class Worker
         // we expect an empty array
         $this->validator->validate("array", $details, 0, 0);
 
-        $payment = $this->paymentWorker->createPayment($order, "PP", "PP", $details);
+        $payment = $this->paymentWorker->createPayment($order, "pp", "pp", $details);
         $ecResult = $this->api->callSetExpressCheckout($payment);
 
         // update payment details with received token
