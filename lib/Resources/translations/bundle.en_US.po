@@ -8,12 +8,12 @@ msgid "PayPal settings"
 msgstr ""
 
 #: @AgitPaypalBundle/Resources/public/js/ctl/admin.settings.paypal.js:8
-#: @AgitPaypalBundle/Setting/PaypalIsActiveSetting.php:16
+#: @AgitPaypalBundle/Setting/IsActiveSetting.php:23
 msgid "Active"
 msgstr ""
 
 #: @AgitPaypalBundle/Resources/public/js/ctl/admin.settings.paypal.js:13
-#: @AgitPaypalBundle/Setting/PaypalEnvironmentSetting.php:16
+#: @AgitPaypalBundle/Setting/EnvironmentSetting.php:23
 msgid "Environment"
 msgstr ""
 
@@ -28,42 +28,34 @@ msgid "Live"
 msgstr ""
 
 #: @AgitPaypalBundle/Resources/public/js/ctl/admin.settings.paypal.js:21
-#: @AgitPaypalBundle/Setting/PaypalApiUsernameSetting.php:16
+#: @AgitPaypalBundle/Setting/ApiUsernameSetting.php:23
 msgid "API username"
 msgstr ""
 
 #: @AgitPaypalBundle/Resources/public/js/ctl/admin.settings.paypal.js:26
-#: @AgitPaypalBundle/Setting/PaypalApiPasswordSetting.php:16
+#: @AgitPaypalBundle/Setting/ApiPasswordSetting.php:23
 msgid "API password"
 msgstr ""
 
 #: @AgitPaypalBundle/Resources/public/js/ctl/admin.settings.paypal.js:31
-#: @AgitPaypalBundle/Setting/PaypalApiSignatureSetting.php:16
+#: @AgitPaypalBundle/Setting/ApiSignatureSetting.php:23
 msgid "API signature"
 msgstr ""
 
-#: @AgitPaypalBundle/Resources/public/js/lib/PaymentModule.js:31
-msgid "The e-mail address is invalid."
+#: @AgitPaypalBundle/Service/Worker.php:92
+msgid "The PayPal request for payment %s has failed, most likely because the transaction has already been processed."
 msgstr ""
 
-#: @AgitPaypalBundle/Service/PaypalApi.php:162
-msgid "Payment ID %s"
-msgstr ""
-
-#: @AgitPaypalBundle/Service/PaypalWorker.php:86
-msgid "The PayPal request for payment %s has failed."
-msgstr ""
-
-#: @AgitPaypalBundle/Service/PaypalWorker.php:95
+#: @AgitPaypalBundle/Service/Worker.php:101
 msgid "The transaction status for payment %s indicates a failed payment."
 msgstr ""
 
-#: @AgitPaypalBundle/Resources/views/Include/form.checkout.html.twig:29
-msgid "E-mail address"
+#: @AgitPaypalBundle/Service/Api.php:167
+msgid "Payment ID %s"
 msgstr ""
 
-#: @AgitPaypalBundle/Resources/views/Include/form.checkout.html.twig:36
-msgid "Please enter the e-mail address of your PayPal account. In the next step, you will be forwarded to the PayPal website to finish the payment."
+#: @AgitPaypalBundle/Resources/views/Include/form.checkout.html.twig:29
+msgid "In the next step, you will be forwarded to the PayPal website to finish the payment."
 msgstr ""
 
 #: @AgitPaypalBundle/Resources/views/Page/admin/settings/080.paypal.html.twig:1
