@@ -21,12 +21,24 @@ use Symfony\Component\HttpFoundation\Request;
 
 class Worker
 {
+    /**
+     * @var ValidationService
+     */
     private $validator;
 
+    /**
+     * @var PaymentWorker
+     */
     private $paymentWorker;
 
+    /**
+     * @var Api
+     */
     private $api;
 
+    /**
+     * @var Config
+     */
     private $config;
 
     public function __construct(ValidationService $validator, PaymentWorker $paymentWorker, Api $api, Config $config)
@@ -81,7 +93,7 @@ class Worker
 
         try {
             // first get details (especially PayerID), then execute payment
-            foreach (["get" => "callGetExpressCheckoutDetails", "do" => "callDoExpressCheckoutPayment"] as $type => $method) {
+            foreach (["callGetExpressCheckoutDetails", "callDoExpressCheckoutPayment"] as $method) {
                 $txnDetails = $this->api->$method($payment);
                 $details = $payment->getDetails() + $txnDetails;
                 $payment->setDetails($details);
