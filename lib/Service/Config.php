@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 /*
  * @package    agitation/paypal-bundle
  * @link       http://github.com/agitation/paypal-bundle
@@ -18,11 +18,11 @@ class Config
     private $parameters;
 
     private $settingNames = [
-        "agit.payment.paypal.active",
-        "agit.payment.paypal.environment",
-        "agit.payment.paypal.api_username",
-        "agit.payment.paypal.api_password",
-        "agit.payment.paypal.api_signature"
+        'agit.payment.paypal.active',
+        'agit.payment.paypal.environment',
+        'agit.payment.paypal.api_username',
+        'agit.payment.paypal.api_password',
+        'agit.payment.paypal.api_signature'
     ];
 
     private $settings;
@@ -30,9 +30,9 @@ class Config
     public function __construct($parameters, SettingService $settingService)
     {
         $this->settings = $settingService->getValuesOf($this->settingNames);
-        $environment = $this->settings["agit.payment.paypal.environment"];
-        $this->active = $this->settings["agit.payment.paypal.active"];
-        $this->parameters = $parameters["environment"][$environment];
+        $environment = $this->settings['agit.payment.paypal.environment'];
+        $this->active = $this->settings['agit.payment.paypal.active'];
+        $this->parameters = $parameters['environment'][$environment];
     }
 
     public function isActive()

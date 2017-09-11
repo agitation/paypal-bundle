@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 /*
  * @package    agitation/paypal-bundle
  * @link       http://github.com/agitation/paypal-bundle
@@ -15,12 +15,12 @@ class IsActiveSetting extends AbstractPaypalSetting
 {
     public function getId()
     {
-        return "agit.payment.paypal.active";
+        return 'agit.payment.paypal.active';
     }
 
     public function getName()
     {
-        return Translate::t("Active");
+        return Translate::t('Active');
     }
 
     public function getDefaultValue()
@@ -30,6 +30,6 @@ class IsActiveSetting extends AbstractPaypalSetting
 
     public function validate($value)
     {
-        $this->validationService->validate("boolean", $value);
+        $this->validationService->validate('boolean', $value);
     }
 }

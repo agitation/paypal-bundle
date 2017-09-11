@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 /*
  * @package    agitation/paypal-bundle
  * @link       http://github.com/agitation/paypal-bundle
@@ -28,12 +28,12 @@ class PaymentModule implements PaymentModuleInterface
 
     public function getId()
     {
-        return "pp";
+        return 'pp';
     }
 
     public function getName()
     {
-        return "PayPal";
+        return 'PayPal';
     }
 
     public function isActive()
@@ -43,7 +43,7 @@ class PaymentModule implements PaymentModuleInterface
 
     public function getMethods()
     {
-        return ["pp" => "PayPal"];
+        return ['pp' => 'PayPal'];
     }
 
     public function getActiveMethods()

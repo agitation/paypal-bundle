@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 /*
  * @package    agitation/paypal-bundle
  * @link       http://github.com/agitation/paypal-bundle
@@ -15,12 +15,12 @@ class ApiSignatureSetting extends AbstractPaypalSetting
 {
     public function getId()
     {
-        return "agit.payment.paypal.api_signature";
+        return 'agit.payment.paypal.api_signature';
     }
 
     public function getName()
     {
-        return Translate::t("API signature");
+        return Translate::t('API signature');
     }
 
     public function getDefaultValue()
@@ -30,6 +30,6 @@ class ApiSignatureSetting extends AbstractPaypalSetting
 
     public function validate($value)
     {
-        $this->validationService->validate("string", $value, 30, 100);
+        $this->validationService->validate('string', $value, 30, 100);
     }
 }
