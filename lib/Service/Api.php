@@ -134,7 +134,7 @@ class Api
                 throw new PaymentProviderCallException(sprintf('The response from PayPal is missing the required `%s` field.', $field));
             }
         }
-        
+
 
         return $result;
     }
@@ -143,10 +143,10 @@ class Api
     {
         $nvpArray = [];
 
-        while (strlen($nvpStr))
+        while (strlen((string)$nvpStr))
         {
             $keypos = strpos($nvpStr, '=');
-            $valuepos = strpos($nvpStr, '&') ? strpos($nvpStr, '&') : strlen($nvpStr);
+            $valuepos = strpos($nvpStr, '&') ? strpos($nvpStr, '&') : strlen((string)$nvpStr);
 
             $keyval = substr($nvpStr, 0, $keypos);
             $valval = substr($nvpStr, $keypos + 1, $valuepos - $keypos - 1);
