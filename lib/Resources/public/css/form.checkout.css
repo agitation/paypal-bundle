@@ -2,3 +2,8 @@
 .module-paypal.method-paypal span                                       { display: inline-block; height: 30px; line-height: 30px }
 .module-paypal.method-paypal .paypal-logo                               { float: right; }
 .module-paypal.method-paypal .paypal-logo svg                           { height: 100%; }
+
+.paypal-submit .msg                                                     { display: table; margin-top: 10px }
+.paypal-submit .msg > *                                                 { display: table-cell; vertical-align: middle; text-align: left; color: #666; font-size: 0.85em }
+.paypal-submit .logo                                                    { padding-right: 10px  }
+.paypal-submit .paypal-logo svg                                         { height: 18px; }
