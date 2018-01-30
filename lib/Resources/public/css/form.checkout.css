@@ -3,8 +3,7 @@
 .module-paypal.method-paypal .paypal-logo                               { float: right; }
 .module-paypal.method-paypal .paypal-logo svg                           { height: 100%; }
 
-.paypal-submit .msg                                                     { display: table; margin-top: 15px; width: 100% }
+.paypal-submit .msg                                                     { display: table; margin-bottom: 15px; width: 100% }
 .paypal-submit .msg > *                                                 { display: table-cell; padding: 8px 10px; vertical-align: middle; color: #555; font-size: 0.9em; background: #f7f7f7 }
 .paypal-submit .logo                                                    { padding-left: 10px; text-align: right; }
-.paypal-submit i.fa                                                     { font-size: 30px; color: #999 }
 .paypal-submit .paypal-logo svg                                         { height: 18px; }
