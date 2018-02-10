@@ -86,9 +86,6 @@ class Api
 
         foreach ($postFields as $key => $value)
         {
-            file_put_contents("/tmp/pp.txt", "\n$key\n", FILE_APPEND);
-            file_put_contents("/tmp/pp.txt", "$value\n", FILE_APPEND);
-
             $request[] = "$key=" . urlencode($value);
         }
 
