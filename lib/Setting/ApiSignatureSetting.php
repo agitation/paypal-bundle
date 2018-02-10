@@ -15,7 +15,7 @@ class ApiSignatureSetting extends AbstractPaypalSetting
 {
     public function getId()
     {
-        return 'agit.payment.paypal.api_signature';
+        return 'tixys.payment.paypal.api_signature';
     }
 
     public function getName()

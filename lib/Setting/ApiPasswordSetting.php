@@ -15,7 +15,7 @@ class ApiPasswordSetting extends AbstractPaypalSetting
 {
     public function getId()
     {
-        return 'agit.payment.paypal.api_password';
+        return 'tixys.payment.paypal.api_password';
     }
 
     public function getName()

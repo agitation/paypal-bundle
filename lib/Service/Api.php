@@ -10,9 +10,9 @@ declare(strict_types=1);
 namespace Agit\PaypalBundle\Service;
 
 use Agit\IntlBundle\Tool\Translate;
-use Agit\OrderBundle\Entity\Payment;
-use Agit\OrderBundle\Exception\PaymentProviderCallException;
-use Agit\OrderBundle\Service\OrderUrlService;
+use Tixys\BaseBundle\Entity\Payment;
+use Tixys\BaseBundle\Component\Order\Exception\PaymentProviderCallException;
+use Tixys\BaseBundle\Component\Order\OrderUrlService;
 
 class Api
 {
@@ -86,6 +86,9 @@ class Api
 
         foreach ($postFields as $key => $value)
         {
+            file_put_contents("/tmp/pp.txt", "\n$key\n", FILE_APPEND);
+            file_put_contents("/tmp/pp.txt", "$value\n", FILE_APPEND);
+
             $request[] = "$key=" . urlencode($value);
         }
 
@@ -164,9 +167,9 @@ class Api
         $fields =
         [
             'VERSION' => '204',
-            'USER' => $this->settings['agit.payment.paypal.api_username'],
-            'PWD' => $this->settings['agit.payment.paypal.api_password'],
-            'SIGNATURE' => $this->settings['agit.payment.paypal.api_signature'],
+            'USER' => $this->settings['tixys.payment.paypal.api_username'],
+            'PWD' => $this->settings['tixys.payment.paypal.api_password'],
+            'SIGNATURE' => $this->settings['tixys.payment.paypal.api_signature'],
 
             'PAYMENTREQUEST_0_PAYMENTACTION' => 'SALE',
             'PAYMENTREQUEST_0_ALLOWEDPAYMENTMETHOD' => 'InstantPaymentOnly',

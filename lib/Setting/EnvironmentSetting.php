@@ -15,7 +15,7 @@ class EnvironmentSetting extends AbstractPaypalSetting
 {
     public function getId()
     {
-        return 'agit.payment.paypal.environment';
+        return 'tixys.payment.paypal.environment';
     }
 
     public function getName()

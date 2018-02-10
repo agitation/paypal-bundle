@@ -2,22 +2,22 @@ services:
     agit.paypal:
         class: Agit\PaypalBundle\Service\PaymentModule
         arguments: [ "@agit.paypal.worker", "@agit.paypal.config" ]
-        tags: [{ name: agit.payment.module }]
+        tags: [{ name: tixys.payment.module }]
 
     agit.paypal.config:
         private : true
         class: Agit\PaypalBundle\Service\Config
-        arguments: [ "%agit_payment_paypal%", "@agit.setting" ]
+        arguments: [ "%tixys_payment_paypal%", "@agit.setting" ]
 
     agit.paypal.api:
         private : true
         class: Agit\PaypalBundle\Service\Api
-        arguments: [ "@agit.order.url", "@agit.paypal.config" ]
+        arguments: [ "@tixys.order.url", "@agit.paypal.config" ]
 
     agit.paypal.worker:
         private : true
         class: Agit\PaypalBundle\Service\Worker
-        arguments: [ "@agit.validation", "@agit.payment.worker", "@agit.paypal.api", "@agit.paypal.config" ]
+        arguments: [ "@agit.validation", "@tixys.payment.worker", "@agit.paypal.api", "@agit.paypal.config" ]
 
 
     # settings

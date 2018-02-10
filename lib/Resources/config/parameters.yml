@@ -1,5 +1,5 @@
 parameters:
-    agit_payment_paypal:
+    tixys_payment_paypal:
         environment:
             test:
                 appId: APP-80W284485P519543T

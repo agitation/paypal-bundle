@@ -18,11 +18,11 @@ class Config
     private $parameters;
 
     private $settingNames = [
-        'agit.payment.paypal.active',
-        'agit.payment.paypal.environment',
-        'agit.payment.paypal.api_username',
-        'agit.payment.paypal.api_password',
-        'agit.payment.paypal.api_signature'
+        'tixys.payment.paypal.active',
+        'tixys.payment.paypal.environment',
+        'tixys.payment.paypal.api_username',
+        'tixys.payment.paypal.api_password',
+        'tixys.payment.paypal.api_signature'
     ];
 
     private $settings;
@@ -30,8 +30,8 @@ class Config
     public function __construct($parameters, SettingService $settingService)
     {
         $this->settings = $settingService->getValuesOf($this->settingNames);
-        $environment = $this->settings['agit.payment.paypal.environment'];
-        $this->active = $this->settings['agit.payment.paypal.active'];
+        $environment = $this->settings['tixys.payment.paypal.environment'];
+        $this->active = $this->settings['tixys.payment.paypal.active'];
         $this->parameters = $parameters['environment'][$environment];
     }
 

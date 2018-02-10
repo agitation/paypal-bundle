@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace Agit\PaypalBundle\Service;
 
-use Agit\OrderBundle\Entity\OrderInterface;
-use Agit\OrderBundle\Entity\Payment;
-use Agit\OrderBundle\Service\PaymentModuleInterface;
+use Tixys\BaseBundle\Entity\OrderInterface;
+use Tixys\BaseBundle\Entity\Payment;
+use Tixys\BaseBundle\Component\Order\PaymentModuleInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 class PaymentModule implements PaymentModuleInterface

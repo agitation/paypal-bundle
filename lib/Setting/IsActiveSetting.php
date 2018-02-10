@@ -15,7 +15,7 @@ class IsActiveSetting extends AbstractPaypalSetting
 {
     public function getId()
     {
-        return 'agit.payment.paypal.active';
+        return 'tixys.payment.paypal.active';
     }
 
     public function getName()

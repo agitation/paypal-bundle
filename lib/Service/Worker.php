@@ -10,12 +10,12 @@ declare(strict_types=1);
 namespace Agit\PaypalBundle\Service;
 
 use Agit\IntlBundle\Tool\Translate;
-use Agit\OrderBundle\Entity\OrderInterface;
-use Agit\OrderBundle\Entity\Payment;
-use Agit\OrderBundle\Exception\PaymentProviderCallException;
-use Agit\OrderBundle\Exception\PaymentRequestException;
-use Agit\OrderBundle\Object\ForwardPage;
-use Agit\OrderBundle\Service\PaymentWorker;
+use Tixys\BaseBundle\Entity\OrderInterface;
+use Tixys\BaseBundle\Entity\PaymentInterface;
+use Tixys\BaseBundle\Component\Order\Exception\PaymentProviderCallException;
+use Tixys\BaseBundle\Component\Order\Exception\PaymentRequestException;
+use Tixys\BaseBundle\Component\Order\Object\ForwardPage;
+use Tixys\BaseBundle\Component\Order\PaymentWorker;
 use Agit\ValidationBundle\ValidationService;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -66,7 +66,7 @@ class Worker
         return $payment;
     }
 
-    public function getForwardPage(Payment $payment)
+    public function getForwardPage(PaymentInterface $payment)
     {
         $config = $this->config->getParameters();
         $details = $payment->getDetails();
@@ -75,7 +75,7 @@ class Worker
         return new ForwardPage($config['paymentPageUrl'], 'get', $fields);
     }
 
-    public function processPayment(Payment $payment, $action, Request $request)
+    public function processPayment(PaymentInterface $payment, $action, Request $request)
     {
         if ($action !== 'confirm')
         {
